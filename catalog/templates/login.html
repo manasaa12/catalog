@@ -1,0 +1,70 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://apis.google.com/js/client:platform.js?onload=start" async defer></script>
+    <script>
+      function start() {
+        gapi.load('auth2', function() {
+          auth2 = gapi.auth2.init({
+            client_id: '300115697179-dpi8fl5ojkpbkq4b9ajcuafao5pjl2di.apps.googleusercontent.com'
+          });
+        });
+      }
+    </script><br>
+      <style>
+      .btn {
+      flex: 1 1 auto;
+      margin: 10px;
+      padding: 15px;
+      text-align: center;
+      text-transform: uppercase;
+      transition: 0.5s;
+      background-size: 200% auto;
+      color: white;
+      box-shadow: 0 0 20px #eee;
+      border-radius: 10px;
+     }
+    .btn:hover {
+      background-position: right center; 
+    }
+    .btn-3 {
+      background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);
+    }
+    </style>  
+     <center><button class="btn btn-3" id="signinButton"> 
+      Signin
+    </button></center>
+    <div id="result"></div>
+    <script>
+      $('#signinButton').click(function() {
+        function signInCallback(authResult){
+          if (authResult['code']){
+            $('#signinButton').attr('style', 'display: none');
+            $.ajax({
+              type: 'POST',
+              url: '/gconnect?state={{STATE}}',
+              headers: {
+              'X-Requested-With': 'XMLHttpRequest'
+              },
+              contentType: 'application/octet-stream; charset=utf-8',
+              success:function(result){
+                $('#result').html('<p>Login success</p>')
+                     setTimeout(function() {
+                      window.location.href = "/home";
+                     }, 1000);
+              },
+              processData:false,
+              data:authResult['code']
+            });
+          } else{
+            
+            console.log('There was an error: ' + authResult['error']);
+            $('#result').html('Login failed');
+          }
+        }
+        auth2.grantOfflineAccess().then(signInCallback);
+      });
+    </script>

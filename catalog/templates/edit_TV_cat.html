@@ -1,0 +1,61 @@
+
+{% extends 'Homepage.html' %}
+
+{% block content %}
+<style>
+  .btn {
+  flex: 1 1 auto;
+  margin: 10px;
+  padding: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+ }
+.btn:hover {
+  background-position: right center; 
+}
+
+.btn-3 {
+  background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);
+}
+</style>
+		<div class="container">
+		<br></br>
+		<br></br>
+		<form class="col-lg-12 offset-lg-3" method="post" action="{{url_for('editTVcategory',category_id=id_category)}}">
+			<div class="form-group row">
+			  <label class="col-sm-2 col-form-label" for="usr">TV Model :</label>
+			  <div class="col-sm-5">
+			  <input type="text" class="form-control" id="usr" name="category_name" value="{{television_name}}" required>
+			</div>
+			</div>	
+			<div class="container">
+			  <h2></h2>
+			  <button type="button" class="btn btn-3" data-toggle="modal" data-target="#myModal">
+			     Update Model
+			  </button>
+			  <div class="modal" id="myModal">
+			    <div class="modal-dialog">
+			      <div class="modal-content">
+			        <div class="modal-header">
+			          <h4 class="modal-title">you want to continue to update this model?</h4>
+			          <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        </div>
+			        <div class="modal-footer">
+			        
+			     		<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button> 
+			          <input type="submit"  class="btn btn-3" style="background-color: green;" value="Confirm"> 
+			        </div>
+			        
+			      </div>
+			    </div>
+			  </div>
+			  
+			</div>
+		</form>
+		</div>
+{% endblock %}

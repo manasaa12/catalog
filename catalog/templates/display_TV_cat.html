@@ -1,0 +1,16 @@
+{% extends 'Homepage.html' %}
+
+{% block content %}
+
+		{% if categories %}
+
+			{% for each in categories %}
+			<a href="{{url_for('showcategoryitems',category_id=each.television_id)}}">{{each.television_name}}<br></a>
+			
+			
+			{% endfor %}
+			{% else %}
+				no items found
+		{% endif %}
+{% endblock %}
+

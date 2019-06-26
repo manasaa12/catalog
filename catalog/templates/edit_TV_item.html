@@ -1,0 +1,106 @@
+
+{% extends 'Homepage.html' %}
+
+{% block content %}
+    <style>
+      .btn {
+      flex: 1 1 auto;
+      margin: 10px;
+      padding: 15px;
+      text-align: center;
+      font-size: 20px;
+      transition: 0.5s;
+      background-size: 200% auto;
+      color: white;
+      box-shadow: 0 0 20px #eee;
+      border-radius: 10px;
+     }
+    .btn:hover {
+      background-position: right center; 
+    }
+
+    .btn-3 {
+      background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);
+    }
+
+    </style> 
+
+      <div class="container" style=" margin-top:80px;">
+        <center><h4 style="color: green">Edit {{ibrand}}</h4></center><br>
+            <form class="col-lg-12 offset-lg-3" method="post" action="{{url_for('updateTVitem',categoryid = catid,itemid=iid)}}">
+              <div class="form-group row">
+                <label class="col-sm-1 col-form-label">Name:</label>
+                <div class="col-sm-5">
+                <input type="text" class="form-control" id="email"  name="iname" value='{{iname}}' required>
+              </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-1 col-form-label">Image:</label>
+                <div class="col-sm-5">
+                <input type="text" class="form-control" id="pwd"  name="iimage" value="{{iimage}}" required>
+              </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-1 col-form-label">Image2:</label>
+                <div class="col-sm-5">
+                <input type="text" class="form-control" id="pwd"  name="iimage2" value="{{image2}}" required>
+              </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-1 col-form-label">Price:</label>
+                <div class="col-sm-5">
+                <input type="text" class="form-control" id="pwd"  name="iprice" value="{{iprice}}" required>
+              </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-1 col-form-label">Brand:</label>
+                <div class="col-sm-5">
+                <input type="text" class="form-control" id="pwd"  name="ibrand" value="{{ibrand}}" required>
+              </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-1 col-form-label">size:</label>
+                <div class="col-sm-5">
+                <input type="text" class="form-control" id="pwd"  name="isize" value="{{isize}}" required>
+              </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-1 col-form-label">resolution:</label>
+                <div class="col-sm-5">
+                <input type="text" class="form-control" id="pwd"  name="iresolution" value="{{iresolution}}" required>
+              </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-1 col-form-label">other features:</label>
+                <div class="col-sm-5">
+                <input type="text" class="form-control" id="pwd"  name="ifeatures" value="{{ifeatures}}" required>
+              </div>
+              </div>
+              <div class="container">
+            <h2></h2>
+
+            <button type="button" class="btn btn-3" data-toggle="modal" data-target="#myModal">
+              Edit Item
+            </button>
+
+            <div class="modal" id="myModal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">You want to continue to edit item</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <div class="modal-footer">
+                  	<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button> 
+          	          <input type="submit"  class="btn btn-3" style="background-color: green;" value="Edit Item">
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+            
+          </div> 
+            </form>
+      </div>
+
+{% endblock %}

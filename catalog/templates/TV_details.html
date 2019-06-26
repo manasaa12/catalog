@@ -1,0 +1,24 @@
+{%extends "Homepage.html"%}
+{%block content%}
+<div class="container py-3">
+    <div class="card bg-light text-dark">
+    <br></br>
+      <div class="row">
+      	<div class="col-md-4">
+    	 	<img src="{{image}}" class="h-100 d-inline-block" width="300px" height="300px">
+    </div>
+      <div class="col-md-8 px-3">
+        <div class="card-block px-3">
+        	<h4>Modal name : {{iname}}</h4>    
+    					<h3>Brand : {{ibrand}}</h3>
+    		    		<h3>Price : ${{iprice}}</h3>
+    		    		<h3>size : {{isize}}</h3>
+    		    		<h3>resolution : {{iresolution}}</h3>
+    		    		<h3>other features : {{ifeatures}}</h3>
+        </div>
+      </div>
+      
+     </div> 
+    </div>
+</div>
+{%endblock%}

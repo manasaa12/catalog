@@ -1,0 +1,63 @@
+{% extends 'Homepage.html' %}
+
+{% block content %}
+		<style>
+		  .btn {
+		  flex: 1 1 auto;
+		  margin: 10px;
+		  padding: 15px;
+		  text-align: center;
+		  text-transform: uppercase;
+		  transition: 0.5s;
+		  background-size: 200% auto;
+		  color: white;
+		  box-shadow: 0 0 20px #eee;
+		  border-radius: 10px;
+		 }
+
+
+		.btn-grad {background-image: linear-gradient(to right, #fc00ff 0%, #00dbde 51%, #fc00ff 100%)}
+		.btn-grad:hover { background-position: right center; }
+		.btn:hover {
+		  background-position: right center; 
+		}
+
+		.btn-3 {
+		  background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);
+		}
+		</style>
+		<div class="container">
+		<br></br>
+				<form method="post" action="{{url_for('newtvcategory')}}">
+					<div class="form-group">
+					  <center><label for="usr">TV Model :</label>
+						
+						<label><input placeholder="Plasma ,LED" type="text" class="form-control" id="usr" name="category_name" required></label></center>
+					</div>
+					<div class="container">
+					  <h2></h2>
+					  
+					  <center><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+					    Add model
+					  </button></center>
+					  <div class="modal" id="myModal">
+					    <div class="modal-dialog">
+					      <div class="modal-content">
+					        <div class="modal-header">
+					          <h4 class="modal-title">You want to continue to add this model?</h4>
+					          <button type="button" class="close" data-dismiss="modal">&times;</button>
+					        </div>
+					       
+					        <div class="modal-footer">
+					     		<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button> 
+					          <input type="submit"  class="btn btn-3" style="background-color: green;" value="Confirm"> 
+					        </div>
+					        
+					      </div>
+					    </div>
+					  </div>
+					  
+					</div>
+				</form>
+		</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+
+{% extends 'Homepage.html' %}
+
+{% block content %}
+
+		{% if categories %}
+
+			{% for each in categories %}
+					<h2 style="color: green">Brand Name : {{each.item_brand}}</h2>
+			{% endfor %}
+			{% else %}
+				<div>
+					<p>There is no brands available
+					</p>
+				</div>
+		{% endif %}
+{% endblock %}
